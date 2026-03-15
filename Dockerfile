@@ -22,11 +22,22 @@ RUN mkdir /CLIProxyAPI
 
 COPY --from=builder ./app/CLIProxyAPIPlus /CLIProxyAPI/CLIProxyAPIPlus
 
-COPY config.example.yaml /CLIProxyAPI/config.example.yaml
+COPY config.example.yaml /CLIProxyAPI/config.yaml
 
 WORKDIR /CLIProxyAPI
 
+# Main API Port
 EXPOSE 8317
+# Gemini OAuth Callback
+EXPOSE 8085
+# Codex OAuth Callback
+EXPOSE 1455
+# Claude / Anthropic OAuth Callback
+EXPOSE 54545
+# Antigravity OAuth Callback
+EXPOSE 51121
+# iFlow OAuth Callback
+EXPOSE 11451
 
 ENV TZ=Asia/Shanghai
 
